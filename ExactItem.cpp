@@ -1,5 +1,9 @@
 #include "ExactItem.h"
 
+ExactItem::ExactItem()
+{
+}
+
 ExactItem::ExactItem(const string name, const string description, uint32_t newID)
 {
     Item(name, description);

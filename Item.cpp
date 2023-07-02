@@ -40,3 +40,8 @@ string Item::getDescription()
 {
     return description;
 }
+
+string Item::getName()
+{
+    return itemName;
+}

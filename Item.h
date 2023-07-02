@@ -21,7 +21,17 @@ class Item
         int getQuantity();
         void setDescription(string newDescription);
         string getDescription();
+        string getName();
 
-	
+        friend struct hash<Item>;
 };
+
+template<>
+	struct hash<Item>
+	{
+		size_t operator()(const Item& key)
+		{
+			return hash<string>()(key.itemName);
+		}
+	};
 

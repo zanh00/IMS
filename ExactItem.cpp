@@ -4,10 +4,9 @@ ExactItem::ExactItem()
 {
 }
 
-ExactItem::ExactItem(const string name, const string description, uint32_t newID)
+ExactItem::ExactItem(const string name, const string description, uint32_t newID) : Item(name, description), ID(newID)
 {
-    Item(name, description);
-    ID = newID;
+    
 }
 
 ExactItem::~ExactItem()

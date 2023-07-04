@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h"
 class ExactItem :
-    protected Item
+    public Item
 {
     private: 
         uint32_t ID;

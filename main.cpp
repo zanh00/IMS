@@ -33,6 +33,7 @@ void addItemOne();
 uint32_t IDgenerator();
 int MainMenuSelection();
 void RemoveItem();
+void DisplayInventory();
 
 int main() {
 
@@ -56,7 +57,7 @@ int main() {
             RemoveItem();
             break;
         case 4:
-
+            DisplayInventory();
             break;
         case 5:
             return 0;
@@ -218,7 +219,13 @@ void RemoveItem()
 
             if(SpeificItem.count(removeID) != 0)                                                                    // if item with this ID exsist than it erases it
             {
-                SpeificItem.erase(removeID);
+                // iterator that finds the position of ID in the vector of general Item -> find(vector.begin(), vector.end(), removeID) 
+                auto it = find(GeneralItemIDs[SpeificItem[removeID].getName()].begin(), GeneralItemIDs[SpeificItem[removeID].getName()].end(), removeID); 
+                if (it != GeneralItemIDs[SpeificItem[removeID].getName()].end())
+                {
+                    GeneralItemIDs[SpeificItem[removeID].getName()].erase(it);                                      // Removes ID from vector map of general item
+                }
+                SpeificItem.erase(removeID);                                                                        // Removes ID from specific item map
                 cout << "Item has been removed" << endl;
             }
             else
@@ -234,4 +241,16 @@ void RemoveItem()
 
     }
 
+}
+
+void DisplayInventory()
+{
+    for (auto i : GeneralItemIDs)
+    {
+        cout << i.first << ":" << endl;
+        for (auto j = i.second.begin(); j != i.second.end(); ++j)
+        {
+            cout << "\t- " << *j << endl;
+        }
+    }
 }
